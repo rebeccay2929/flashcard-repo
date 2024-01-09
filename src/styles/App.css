@@ -30,6 +30,9 @@ translateY(var(--translate-y, 0));
 --rotate-y:180deg
 }
 
+.card .front {
+    left: 0;
+}
 
 .card .front,
 .card .back {
@@ -42,4 +45,20 @@ translateY(var(--translate-y, 0));
 
 .card .back{
     transform: rotateY(180deg);
+}
+
+
+.flashcard-options{
+    margin-top: .5rem;
+}
+
+.flashcard-single-option{
+    margin-top: .25rem;
+    color: #555;
+    font-size: .75rem;
+}
+
+
+.flashcard-option:first-child{
+    margin-top: 0;
 }
