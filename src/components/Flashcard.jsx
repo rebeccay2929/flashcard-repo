@@ -17,7 +17,7 @@ export default function FlashCard({ flashcard }) {
             <div className="flashcard-single-option">{singleOption}</div>
           ))}
         </div>
-
+  
       </div>
 
       <div className="back">{flashcard.answer}</div>

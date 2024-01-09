@@ -6,24 +6,29 @@ function App() {
   const [flashcardsList, setFlashcardsList] = useState(sampleFlashcards);
 
   useEffect(() => {
-    axios
-    .get("https://opentdb.com/api.php?amount=10")
-    .then(res => {
-      res.data.results.map((questionItem, index) => 
-        (
-          {id: `${index}`}
-        )
-      )
+    axios.get("https://opentdb.com/api.php?amount=10").then((res) => {
+      setFlashcardsList(
+        res.data.results.map((questionItem, index) => {
+          const answer = questionItem.correct_answer;
+          const options = [...questionItem.incorrect_answers, answer] 
+          return {
+            id: `${index} - ${Date.now()}`,
+            questions: questionItem.question,
+            answer: answer,
+            options: options.sort(() => Math.random() - 0.5),
+          };
+        })
+      );
       console.log(res.data);
     });
   }, []);
 
   return (
-    <>
+    
       <div>
         <FlashCardList flashcardsList={flashcardsList} />
       </div>
-    </>
+  
   );
 }
 
